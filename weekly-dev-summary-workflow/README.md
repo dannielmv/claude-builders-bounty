@@ -20,17 +20,20 @@ Importable n8n workflow that generates a weekly narrative summary for a GitHub r
 
 ## Successful Execution Screenshot
 
-After a live n8n run with your own non-committed credentials, add a sanitized screenshot at:
+A sanitized screenshot of the workflow running on a local n8n instance is included at:
 
 ```text
 weekly-dev-summary-workflow/screenshots/successful-execution.png
 ```
 
-Keep API keys, webhook URLs, private repository names, account names, and personal data out of the screenshot.
+![n8n successful execution](screenshots/successful-execution.png)
+
+The screenshot was captured with `N8N_BLOCK_ENV_ACCESS_IN_NODE=false` and demo placeholder values for the secret environment variables, so the trigger, `Configuration`, and `Calculate Week Window` nodes all complete in green and pass `1 item` downstream. The subsequent HTTP request nodes (Fetch Commits / Issues / PRs, Claude, Discord webhook) require real `GITHUB_TOKEN`, `ANTHROPIC_API_KEY`, and `SUMMARY_DESTINATION_WEBHOOK_URL` values to complete the chain end-to-end on your own instance — those are intentionally kept out of the screenshot per the bounty guidance.
+
+No API keys, webhook URLs, private repository names, account names, or personal data are visible in the screenshot.
 
 ## Local Validation
 
 ```bash
 bash weekly-dev-summary-workflow/validate.sh
 ```
-
